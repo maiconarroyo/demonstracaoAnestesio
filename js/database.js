@@ -1,36 +1,36 @@
-// Armazenamento de dados
-const database = {
-    consultas: [],
-    pacientes: [],
-    anestesistas: []
-  };
-  
-  // Funções para manipulação dos dados
-  function salvarConsulta(consulta) {
-    database.consultas.push(consulta);
-    localStorage.setItem('consultas', JSON.stringify(database.consultas));
-  }
-  
-  function salvarPaciente(paciente) {
-    database.pacientes.push(paciente);
-    localStorage.setItem('pacientes', JSON.stringify(database.pacientes));
-  }
-  
-  function salvarAnestesista(anestesista) {
-    database.anestesistas.push(anestesista);
-    localStorage.setItem('anestesistas', JSON.stringify(database.anestesistas));
-  }
-  
-  // Carregar dados do localStorage ao iniciar
-  function carregarDados() {
-    const consultasSalvas = localStorage.getItem('consultas');
-    const pacientesSalvos = localStorage.getItem('pacientes');
-    const anestesistasSalvos = localStorage.getItem('anestesistas');
-  
-    if (consultasSalvas) database.consultas = JSON.parse(consultasSalvas);
-    if (pacientesSalvos) database.pacientes = JSON.parse(pacientesSalvos);
-    if (anestesistasSalvos) database.anestesistas = JSON.parse(anestesistasSalvos);
-  }
-  
-  // Inicializar
-  carregarDados();
+// Armazena os dados dos pacientes
+let pacientes = [];
+
+// Armazena as avaliações completas
+let avaliacoes = [];
+
+// Função para adicionar novo paciente
+function adicionarPaciente(paciente) {
+    pacientes.push(paciente);
+    console.log('Paciente adicionado:', paciente);
+    console.log('Lista de pacientes:', pacientes);
+    return paciente;
+}
+
+// Função para atualizar dados do paciente
+function atualizarPaciente(id, dados) {
+    const pacienteIndex = pacientes.findIndex(p => p.id === id);
+    if (pacienteIndex !== -1) {
+        pacientes[pacienteIndex] = {...pacientes[pacienteIndex], ...dados};
+        return pacientes[pacienteIndex];
+    }
+    return null;
+}
+
+// Função para adicionar avaliação
+function adicionarAvaliacao(avaliacao) {
+    avaliacoes.push(avaliacao);
+    return avaliacao;
+}
+
+// Função para buscar paciente por ID
+function buscarPaciente(id) {
+    return pacientes.find(p => p.id === id);
+}
+
+export { pacientes, avaliacoes, adicionarPaciente, atualizarPaciente, adicionarAvaliacao, buscarPaciente };

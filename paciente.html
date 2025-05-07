@@ -1,50 +1,188 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paciente - Formulário Pré-Anestésico</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paciente - Avaliação Pré-Anestésica</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Formulário Pré-Anestésico</h1>
-    <form id="formPaciente">
-      <div id="dadosSecretaria"></div>
-      
-      <div class="form-group">
-        <label for="peso">Peso (kg):</label>
-        <input type="number" id="peso" step="0.1" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="altura">Altura (cm):</label>
-        <input type="number" id="altura" required>
-      </div>
-      
-      <!-- Campos com lógica de sim/não -->
-      <div class="form-group toggle-group">
-        <label>Tem alergia?</label>
-        <div class="toggle-options">
-          <input type="radio" name="alergia" id="alergiaSim" value="sim">
-          <label for="alergiaSim">Sim</label>
-          <input type="radio" name="alergia" id="alergiaNao" value="nao" checked>
-          <label for="alergiaNao">Não</label>
-        </div>
-        <div id="alergiaDetalhes" class="toggle-details" style="display: none;">
-          <label for="alergiaDesc">Qual alergia?</label>
-          <input type="text" id="alergiaDesc">
-        </div>
-      </div>
-      
-      <!-- Repetir padrão para outros campos similares -->
-      <!-- Medicação, Problemas de saúde, Fuma, Bebe, Drogas -->
-      
-      <button type="submit" class="btn">Enviar Formulário</button>
-    </form>
-  </div>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="Secretaria.html">Secretaria</a></li>
+                <li><a href="Paciente.html">Paciente</a></li>
+                <li><a href="Anestesista.html">Anestesista</a></li>
+                <li><a href="Avaliacao.html">Avaliação</a></li>
+            </ul>
+        </nav>
+        <h1>Paciente - Dados Complementares</h1>
+    </header>
 
-  <script src="js/database.js"></script>
-  <script src="js/script.js"></script>
+    <main>
+        <section id="dadosSecretaria" class="dados-verificacao">
+            <h2>Verifique seus dados cadastrados</h2>
+            <table>
+                <tr>
+                    <th>Nome Completo:</th>
+                    <td id="tdNome"></td>
+                </tr>
+                <tr>
+                    <th>Data da Cirurgia:</th>
+                    <td id="tdDataCirurgia"></td>
+                </tr>
+                <tr>
+                    <th>Procedimento:</th>
+                    <td id="tdProcedimento"></td>
+                </tr>
+                <tr>
+                    <th>Cirurgião Responsável:</th>
+                    <td id="tdCirurgiao"></td>
+                </tr>
+                <tr>
+                    <th>Convênio:</th>
+                    <td id="tdConvenio"></td>
+                </tr>
+                <tr>
+                    <th>Data de Nascimento:</th>
+                    <td id="tdDataNascimento"></td>
+                </tr>
+                <tr>
+                    <th>Nome da Mãe:</th>
+                    <td id="tdNomeMae"></td>
+                </tr>
+            </table>
+            <div class="confirmacao-dados">
+                <p>Os dados acima estão corretos?</p>
+                <div class="radio-group">
+                    <input type="radio" id="dadosCorretosSim" name="dadosCorretos" value="sim" checked>
+                    <label for="dadosCorretosSim">Sim, estão corretos</label>
+                    <input type="radio" id="dadosCorretosNao" name="dadosCorretos" value="nao">
+                    <label for="dadosCorretosNao">Não, preciso corrigir</label>
+                </div>
+            </div>
+        </section>
+
+        <form id="formDadosPaciente">
+            <h2>Preencha seus dados complementares</h2>
+            
+            <div class="form-group">
+                <label for="peso">Peso (kg):</label>
+                <input type="number" id="peso" name="peso" step="0.1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="altura">Altura (cm):</label>
+                <input type="number" id="altura" name="altura" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tem alergia?</label>
+                <div class="radio-group">
+                    <input type="radio" id="alergiaSim" name="alergia" value="sim" onchange="mostrarCampo('alergiaCampo', this)">
+                    <label for="alergiaSim">Sim</label>
+                    <input type="radio" id="alergiaNao" name="alergia" value="nao" onchange="mostrarCampo('alergiaCampo', this)" checked>
+                    <label for="alergiaNao">Não</label>
+                </div>
+                <div id="alergiaCampo" class="campo-condicional" style="display: none;">
+                    <label for="alergiaDescricao">Qual alergia?</label>
+                    <input type="text" id="alergiaDescricao" name="alergiaDescricao">
+                </div>
+            </div>
+
+            <!-- Adicione os outros campos condicionais aqui conforme necessário -->
+
+            <button type="submit" id="btnEnviar">Enviar Dados</button>
+        </form>
+
+        <div id="mensagemSucesso" class="mensagem-sucesso" style="display: none;">
+            Dados complementares enviados com sucesso!
+        </div>
+    </main>
+
+    <script type="module">
+        import { buscarPaciente, atualizarPaciente } from './database.js';
+
+        // Função para mostrar campos condicionais
+        window.mostrarCampo = function(campoId, radio) {
+            const campo = document.getElementById(campoId);
+            campo.style.display = radio.value === 'sim' ? 'block' : 'none';
+            if (radio.value === 'nao') {
+                campo.querySelector('input').value = '';
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Buscar paciente pelo ID armazenado no localStorage
+            const pacienteId = localStorage.getItem('ultimoPacienteId');
+            if (pacienteId) {
+                const paciente = buscarPaciente(pacienteId);
+                if (paciente) {
+                    // Preencher tabela de verificação
+                    document.getElementById('tdNome').textContent = paciente.nome;
+                    document.getElementById('tdDataCirurgia').textContent = formatarData(paciente.dataCirurgia);
+                    document.getElementById('tdProcedimento').textContent = paciente.procedimento;
+                    document.getElementById('tdCirurgiao').textContent = paciente.cirurgiao;
+                    document.getElementById('tdConvenio').textContent = paciente.convenio;
+                    document.getElementById('tdDataNascimento').textContent = formatarData(paciente.dataNascimento);
+                    document.getElementById('tdNomeMae').textContent = paciente.nomeMae;
+                }
+            }
+
+            // Verificar se os dados estão corretos
+            document.getElementById('dadosCorretosNao').addEventListener('change', function() {
+                if (this.checked) {
+                    alert('Por favor, retorne à recepção para corrigir seus dados cadastrais.');
+                    document.getElementById('formDadosPaciente').style.opacity = '0.5';
+                    document.getElementById('formDadosPaciente').querySelectorAll('input, button').forEach(el => {
+                        el.disabled = true;
+                    });
+                }
+            });
+
+            document.getElementById('dadosCorretosSim').addEventListener('change', function() {
+                if (this.checked) {
+                    document.getElementById('formDadosPaciente').style.opacity = '1';
+                    document.getElementById('formDadosPaciente').querySelectorAll('input, button').forEach(el => {
+                        el.disabled = false;
+                    });
+                }
+            });
+
+            document.getElementById('formDadosPaciente').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!pacienteId) {
+                    alert('Nenhum paciente encontrado. Por favor, cadastre-se primeiro na página da Secretaria.');
+                    return;
+                }
+
+                if (document.getElementById('dadosCorretosNao').checked) {
+                    alert('Você indicou que seus dados estão incorretos. Por favor, corrija-os antes de continuar.');
+                    return;
+                }
+
+                const dadosComplementares = {
+                    peso: document.getElementById('peso').value,
+                    altura: document.getElementById('altura').value,
+                    alergia: document.querySelector('input[name="alergia"]:checked').value,
+                    alergiaDescricao: document.getElementById('alergiaDescricao').value,
+                    // Adicionar outros campos aqui
+                    completadoPaciente: true
+                };
+
+                atualizarPaciente(pacienteId, dadosComplementares);
+                
+                document.getElementById('mensagemSucesso').style.display = 'block';
+                document.getElementById('formDadosPaciente').reset();
+            });
+
+            function formatarData(dataString) {
+                if (!dataString) return '';
+                const data = new Date(dataString);
+                return data.toLocaleDateString('pt-BR');
+            }
+        });
+    </script>
 </body>
 </html>
