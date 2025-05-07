@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+header {
+    background-color: #0078d7;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #0078d7;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.sim-nao {
+    margin-bottom: 15px;
+}
+
+.sim-nao div {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.detalhes {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    display: none;
+}
+
+button {
+    background-color: #0078d7;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #005a9e;
+}
+
+.relatorio {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.categoria table, .sala-rpa table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.categoria table td, .sala-rpa table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.antecedentes p {
+    margin-bottom: 10px;
+}
+
+#dadosSecretaria, #dadosPaciente {
+    background-color: #f5f5f5;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}

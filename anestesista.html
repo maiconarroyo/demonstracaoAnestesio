@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anestesista - Avaliação Pré-Anestésica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Avaliação do Anestesista</h1>
+    </header>
+    <main>
+        <div id="dadosPaciente"></div>
+        
+        <form id="formAnestesista">
+            <div class="form-group">
+                <label for="pa">PA:</label>
+                <input type="text" id="pa" required>
+            </div>
+            <div class="form-group">
+                <label for="pulso">Pulso:</label>
+                <input type="text" id="pulso" required>
+            </div>
+            <div class="form-group">
+                <label for="temperatura">Temperatura:</label>
+                <input type="text" id="temperatura" required>
+            </div>
+            <div class="form-group">
+                <label for="fc">FC:</label>
+                <input type="text" id="fc" required>
+            </div>
+            <div class="form-group">
+                <label for="respirarão">Respiração:</label>
+                <input type="text" id="respirarão" required>
+            </div>
+            <div class="form-group">
+                <label for="asa">ASA:</label>
+                <select id="asa" required>
+                    <option value="">Selecione</option>
+                    <option value="1">ASA I</option>
+                    <option value="2">ASA II</option>
+                    <option value="3">ASA III</option>
+                    <option value="4">ASA IV</option>
+                    <option value="5">ASA V</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="mallampati">Mallampati:</label>
+                <select id="mallampati" required>
+                    <option value="">Selecione</option>
+                    <option value="1">I</option>
+                    <option value="2">II</option>
+                    <option value="3">III</option>
+                    <option value="4">IV</option>
+                </select>
+            </div>
+            
+            <!-- Campos com opção Sim/Não -->
+            <div class="form-group sim-nao">
+                <label>Solicitação de UTI?</label>
+                <div>
+                    <input type="radio" name="uti" id="utiSim" value="sim">
+                    <label for="utiSim">Sim</label>
+                    <input type="radio" name="uti" id="utiNao" value="nao" checked>
+                    <label for="utiNao">Não</label>
+                </div>
+            </div>
+            
+            <div class="form-group sim-nao">
+                <label>Exames complementares?</label>
+                <div>
+                    <input type="radio" name="exames" id="examesSim" value="sim">
+                    <label for="examesSim">Sim</label>
+                    <input type="radio" name="exames" id="examesNao" value="nao" checked>
+                    <label for="examesNao">Não</label>
+                </div>
+                <div id="examesDetalhes" class="detalhes" style="display: none;">
+                    <label for="examesQual">Quais?</label>
+                    <input type="text" id="examesQual">
+                </div>
+            </div>
+            
+            <div class="form-group sim-nao">
+                <label>Pré-anestésico?</label>
+                <div>
+                    <input type="radio" name="preAnestesico" id="preAnestesicoSim" value="sim">
+                    <label for="preAnestesicoSim">Sim</label>
+                    <input type="radio" name="preAnestesico" id="preAnestesicoNao" value="nao" checked>
+                    <label for="preAnestesicoNao">Não</label>
+                </div>
+                <div id="preAnestesicoDetalhes" class="detalhes" style="display: none;">
+                    <label for="preAnestesicoQual">Qual?</label>
+                    <input type="text" id="preAnestesicoQual">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="obs">Observações:</label>
+                <textarea id="obs" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" id="finalizarAvaliacao">Finalizar Avaliação</button>
+        </form>
+    </main>
+    <script src="js/database.js"></script>
+    <script src="js/anestesista.js"></script>
+</body>
+</html>

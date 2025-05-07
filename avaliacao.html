@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Avaliação Pré-Anestésica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="relatorio">
+        <h1>RELATÓRIO DE AVALIAÇÃO PRÉ-ANESTÉSICA</h1>
+        
+        <div class="dados-paciente">
+            <p><strong>Nome Social:</strong> <span id="nomeSocial"></span></p>
+            <p><strong>Nome do Paciente:</strong> <span id="nomePacienteRelatorio"></span></p>
+            <p><strong>Nome da Mãe:</strong> <span id="nomeMaeRelatorio"></span></p>
+            <p><strong>Data de Nascimento:</strong> <span id="dataNascimentoRelatorio"></span></p>
+        </div>
+        
+        <div class="categoria">
+            <h2>CATEGORIA</h2>
+            <table>
+                <tr>
+                    <td><strong>DIAG. PRÉ-OP</strong> <span id="diagnosticoPreOp"></span></td>
+                    <td><strong>S.O.</strong> <span id="so"></span></td>
+                    <td><strong>HORA</strong> <span id="hora"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>OP. PROPOSTA</strong> <span id="opProposta"></span></td>
+                    <td><strong>ANESTESIA</strong> <span id="anestesia"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>IDADE</strong> <span id="idade"></span></td>
+                    <td><strong>SEXO</strong> <span id="sexo"></span></td>
+                    <td><strong>COR</strong> <span id="cor"></span></td>
+                    <td><strong>ALTURA</strong> <span id="alturaRelatorio"></span> cm</td>
+                    <td><strong>PESO</strong> <span id="pesoRelatorio"></span> kg</td>
+                </tr>
+                <tr>
+                    <td><strong>PA =</strong> <span id="paRelatorio"></span></td>
+                    <td><strong>PULSO</strong> <span id="pulsoRelatorio"></span></td>
+                    <td><strong>F. RESP.</strong> <span id="fResp"></span></td>
+                    <td><strong>TEMP. AXILAR</strong> <span id="tempAxilar"></span></td>
+                    <td><strong>GRUPO SANG.</strong> <span id="grupoSanguineo"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>ESTADO FÍSICO</strong> <span id="estadoFisico"></span></td>
+                    <td><strong>OBS.:</strong> <span id="obsRelatorio"></span></td>
+                    <td><strong>ASA:</strong> <span id="asaRelatorio"></span></td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="antecedentes">
+            <h2>ANTECEDENTES ANESTÉSICOS PESSOAIS:</h2>
+            <p><strong>FATORES DE RISCO CORONÁRIO:</strong> <span id="fatoresRisco"></span></p>
+            <p><strong>ALERGIA À DROGAS:</strong> <span id="alergiaDrogas"></span></p>
+            <p><strong>DROGAS EM USO:</strong> <span id="drogasUso"></span></p>
+            <p><strong>JÁ FEZ TRATAM. COM CORTICÓIDES?</strong> <span id="corticoides"></span></p>
+            
+            <p><strong>DOENÇAS ANTERIORES:</strong> <span id="doencasAnteriores"></span></p>
+            <p><strong>ENDOCRINAS:</strong> <span id="endocrinas"></span></p>
+            <p><strong>NEUROLÓGICAS:</strong> <span id="neurologicas"></span></p>
+            <p><strong>HEMOPATIAS:</strong> <span id="hemopatias"></span></p>
+            <p><strong>CARDÍACAS:</strong> <span id="cardiacas"></span></p>
+            <p><strong>PULMONARES:</strong> <span id="pulmonares"></span></p>
+            <p><strong>RENAIS:</strong> <span id="renais"></span></p>
+            <p><strong>HEPÁTICAS:</strong> <span id="hepaticas"></span></p>
+            
+            <p><strong>EXAME FÍSICO GERAL:</strong> <span id="exameFisicoGeral"></span></p>
+            <p><strong>CABEÇA - PESCOÇO:</strong> <span id="cabecaPescoco"></span></p>
+            <p><strong>AP. CARDIOVASCULAR:</strong> <span id="apCardiovascular"></span></p>
+            <p><strong>ECG:</strong> <span id="ecg"></span> <strong>ECO</strong> <span id="eco"></span> <strong>EDEMA:</strong> <span id="edema"></span></p>
+            <p><strong>AP. RESPIRATÓRIO:</strong> <span id="apRespiratorio"></span></p>
+            <p><strong>ENFISEMA</strong> <span id="enfisema"></span> <strong>ASMA BRÔNGUICA</strong> <span id="asmaBronquica"></span> <strong>RX TÓRAX:</strong> <span id="rxTorax"></span></p>
+            
+            <h3>LABORATÓRIO:</h3>
+            <p><strong>Hemácias</strong> <span id="hemacias"></span> mm <strong>Hb</strong> <span id="hb"></span> g% <strong>Htc</strong> <span id="htc"></span> % <strong>Leucócitos</strong> <span id="leucocitos"></span> mm³ <strong>Plaquetas</strong> <span id="plaquetas"></span> mm³ <strong>AP.</strong> <span id="ap"></span> %</p>
+            <p><strong>T.C.</strong> <span id="tc"></span> <strong>T.S</strong> <span id="ts"></span> <strong>T. Prot.</strong> <span id="tProt"></span> <strong>TTPA</strong> <span id="ttpa"></span> <strong>RNI</strong> <span id="rni"></span> <strong>Glicemia</strong> <span id="glicemia"></span> mg% <strong>Uréia</strong> <span id="ureia"></span> mg% <strong>Creatinina</strong> <span id="creatinina"></span> mg%</p>
+            <p><strong>Prot. Totais</strong> <span id="protTotais"></span> g% <strong>Outros:</strong> <span id="outrosLab"></span></p>
+            
+            <h3>URINA:</h3>
+            <p><strong>Densidade</strong> <span id="densidade"></span> <strong>pH</strong> <span id="ph"></span> <strong>Aspecto</strong> <span id="aspecto"></span> <strong>Cor</strong> <span id="corUrina"></span> <strong>Elementos Anormais</strong> <span id="elementosAnormais"></span></p>
+            <p><strong>Sedimento:</strong> <strong>Leucócitos</strong> <span id="leucocitosSedimento"></span> <strong>Hemácias</strong> <span id="hemaciasSedimento"></span> <strong>Clíndro</strong> <span id="clindro"></span></p>
+            <p><strong>Bacterias</strong> <span id="bacterias"></span> <strong>Cristais</strong> <span id="cristais"></span> <strong>Células</strong> <span id="celulas"></span> <strong>Muco</strong> <span id="muco"></span> <strong>Obs</strong> <span id="obsUrina"></span></p>
+        </div>
+        
+        <div class="sala-rpa">
+            <h2>SALA DE RPA</h2>
+            <table>
+                <tr>
+                    <td><strong>DATA:</strong> <span id="dataRpa"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>CRITÉRIO DE ALTA RPA</strong> <span id="criterioAlta"></span></td>
+                </tr>
+                <tr>
+                    <td><strong>HORÁRIO:</strong> <span id="horarioAlta"></span> | <strong>Ass.:</strong> <span id="assinatura"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="js/database.js"></script>
+    <script src="js/avaliacao.js"></script>
+</body>
+</html>
