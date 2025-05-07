@@ -1,117 +1,50 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paciente - Avaliação Pré-Anestésica</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paciente - Formulário Pré-Anestésico</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
-        <h1>Formulário de Avaliação Pré-Anestésica</h1>
-    </header>
-    <main>
-        <div id="dadosSecretaria"></div>
-        <form id="formPaciente">
-            <div class="form-group">
-                <label for="peso">Peso (kg):</label>
-                <input type="number" id="peso" step="0.1" required>
-            </div>
-            <div class="form-group">
-                <label for="altura">Altura (cm):</label>
-                <input type="number" id="altura" required>
-            </div>
-            
-            <!-- Campos com opção Sim/Não -->
-            <div class="form-group sim-nao">
-                <label>Tem alergia?</label>
-                <div>
-                    <input type="radio" name="alergia" id="alergiaSim" value="sim">
-                    <label for="alergiaSim">Sim</label>
-                    <input type="radio" name="alergia" id="alergiaNao" value="nao" checked>
-                    <label for="alergiaNao">Não</label>
-                </div>
-                <div id="alergiaDetalhes" class="detalhes" style="display: none;">
-                    <label for="alergiaQual">Qual?</label>
-                    <input type="text" id="alergiaQual">
-                </div>
-            </div>
-            
-            <!-- Repetir padrão para outros campos -->
-            <div class="form-group sim-nao">
-                <label>Toma alguma medicação?</label>
-                <div>
-                    <input type="radio" name="medicacao" id="medicacaoSim" value="sim">
-                    <label for="medicacaoSim">Sim</label>
-                    <input type="radio" name="medicacao" id="medicacaoNao" value="nao" checked>
-                    <label for="medicacaoNao">Não</label>
-                </div>
-                <div id="medicacaoDetalhes" class="detalhes" style="display: none;">
-                    <label for="medicacaoQual">Qual?</label>
-                    <input type="text" id="medicacaoQual">
-                </div>
-            </div>
-            
-            <div class="form-group sim-nao">
-                <label>Tem algum problema de saúde?</label>
-                <div>
-                    <input type="radio" name="problemaSaude" id="problemaSaudeSim" value="sim">
-                    <label for="problemaSaudeSim">Sim</label>
-                    <input type="radio" name="problemaSaude" id="problemaSaudeNao" value="nao" checked>
-                    <label for="problemaSaudeNao">Não</label>
-                </div>
-                <div id="problemaSaudeDetalhes" class="detalhes" style="display: none;">
-                    <label for="problemaSaudeQual">Qual?</label>
-                    <input type="text" id="problemaSaudeQual">
-                </div>
-            </div>
-            
-            <div class="form-group sim-nao">
-                <label>Fuma?</label>
-                <div>
-                    <input type="radio" name="fuma" id="fumaSim" value="sim">
-                    <label for="fumaSim">Sim</label>
-                    <input type="radio" name="fuma" id="fumaNao" value="nao" checked>
-                    <label for="fumaNao">Não</label>
-                </div>
-                <div id="fumaDetalhes" class="detalhes" style="display: none;">
-                    <label for="fumaQuantidade">Quantidade/dia?</label>
-                    <input type="text" id="fumaQuantidade">
-                </div>
-            </div>
-            
-            <div class="form-group sim-nao">
-                <label>Bebe?</label>
-                <div>
-                    <input type="radio" name="bebe" id="bebeSim" value="sim">
-                    <label for="bebeSim">Sim</label>
-                    <input type="radio" name="bebe" id="bebeNao" value="nao" checked>
-                    <label for="bebeNao">Não</label>
-                </div>
-                <div id="bebeDetalhes" class="detalhes" style="display: none;">
-                    <label for="bebeFrequencia">Frequência?</label>
-                    <input type="text" id="bebeFrequencia">
-                </div>
-            </div>
-            
-            <div class="form-group sim-nao">
-                <label>Usa drogas?</label>
-                <div>
-                    <input type="radio" name="drogas" id="drogasSim" value="sim">
-                    <label for="drogasSim">Sim</label>
-                    <input type="radio" name="drogas" id="drogasNao" value="nao" checked>
-                    <label for="drogasNao">Não</label>
-                </div>
-                <div id="drogasDetalhes" class="detalhes" style="display: none;">
-                    <label for="drogasQual">Qual?</label>
-                    <input type="text" id="drogasQual">
-                </div>
-            </div>
-            
-            <button type="submit">Enviar Formulário</button>
-        </form>
-    </main>
-    <script src="js/database.js"></script>
-    <script src="js/paciente.js"></script>
+  <div class="container">
+    <h1>Formulário Pré-Anestésico</h1>
+    <form id="formPaciente">
+      <div id="dadosSecretaria"></div>
+      
+      <div class="form-group">
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" step="0.1" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="altura">Altura (cm):</label>
+        <input type="number" id="altura" required>
+      </div>
+      
+      <!-- Campos com lógica de sim/não -->
+      <div class="form-group toggle-group">
+        <label>Tem alergia?</label>
+        <div class="toggle-options">
+          <input type="radio" name="alergia" id="alergiaSim" value="sim">
+          <label for="alergiaSim">Sim</label>
+          <input type="radio" name="alergia" id="alergiaNao" value="nao" checked>
+          <label for="alergiaNao">Não</label>
+        </div>
+        <div id="alergiaDetalhes" class="toggle-details" style="display: none;">
+          <label for="alergiaDesc">Qual alergia?</label>
+          <input type="text" id="alergiaDesc">
+        </div>
+      </div>
+      
+      <!-- Repetir padrão para outros campos similares -->
+      <!-- Medicação, Problemas de saúde, Fuma, Bebe, Drogas -->
+      
+      <button type="submit" class="btn">Enviar Formulário</button>
+    </form>
+  </div>
+
+  <script src="js/database.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

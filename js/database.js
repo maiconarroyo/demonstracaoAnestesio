@@ -1,40 +1,36 @@
-// Banco de dados "simulado"
-let pacientes = [];
-
-// Dados da secretaria
-function adicionarPacienteSecretaria(dados) {
-    pacientes.push({
-        secretaria: dados,
-        paciente: null,
-        anestesista: null
-    });
-    return pacientes.length - 1; // Retorna o ID do paciente
-}
-
-// Dados do paciente
-function atualizarPaciente(id, dados) {
-    if (pacientes[id]) {
-        pacientes[id].paciente = dados;
-        return true;
-    }
-    return false;
-}
-
-// Dados do anestesista
-function atualizarAnestesista(id, dados) {
-    if (pacientes[id]) {
-        pacientes[id].anestesista = dados;
-        return true;
-    }
-    return false;
-}
-
-// Obter paciente por ID
-function obterPaciente(id) {
-    return pacientes[id] || null;
-}
-
-// Obter todos os pacientes
-function obterTodosPacientes() {
-    return pacientes;
-}
+// Armazenamento de dados
+const database = {
+    consultas: [],
+    pacientes: [],
+    anestesistas: []
+  };
+  
+  // Funções para manipulação dos dados
+  function salvarConsulta(consulta) {
+    database.consultas.push(consulta);
+    localStorage.setItem('consultas', JSON.stringify(database.consultas));
+  }
+  
+  function salvarPaciente(paciente) {
+    database.pacientes.push(paciente);
+    localStorage.setItem('pacientes', JSON.stringify(database.pacientes));
+  }
+  
+  function salvarAnestesista(anestesista) {
+    database.anestesistas.push(anestesista);
+    localStorage.setItem('anestesistas', JSON.stringify(database.anestesistas));
+  }
+  
+  // Carregar dados do localStorage ao iniciar
+  function carregarDados() {
+    const consultasSalvas = localStorage.getItem('consultas');
+    const pacientesSalvos = localStorage.getItem('pacientes');
+    const anestesistasSalvos = localStorage.getItem('anestesistas');
+  
+    if (consultasSalvas) database.consultas = JSON.parse(consultasSalvas);
+    if (pacientesSalvos) database.pacientes = JSON.parse(pacientesSalvos);
+    if (anestesistasSalvos) database.anestesistas = JSON.parse(anestesistasSalvos);
+  }
+  
+  // Inicializar
+  carregarDados();
